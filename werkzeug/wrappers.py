@@ -896,7 +896,9 @@ class BaseResponse(object):
         """
         # if an unicode string is set, it's encoded directly so that we
         # can set the content length
-        if isinstance(value, text_type):
+        if value is None:
+            pass
+        elif isinstance(value, text_type):
             value = value.encode(self.charset)
         else:
             value = bytes(value)
